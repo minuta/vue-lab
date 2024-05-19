@@ -4,12 +4,16 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite && mock-server",
     "build": "vue-tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "mock-server": "npx tsx src/tools/mock-server.ts"
   },
   "dependencies": {
+    "@types/node": "^20.12.12",
     "axios": "^1.6.8",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.10.5",
     "vue": "^3.4.21"
   },
   "devDependencies": {
