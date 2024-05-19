@@ -1,15 +1,3 @@
-<!--<script setup lang="ts">-->
-
-<!--</script>-->
-
-<!--<template>-->
-
-<!--</template>-->
-
-<!--<style scoped>-->
-
-<!--</style>-->
-
 <template>
   <div>
     <form @submit.prevent="fetchUserData">
@@ -59,4 +47,35 @@ export default defineComponent({
 
 <style scoped>
 /* Add your styles here */
+
+form {
+  max-width: 300px;
+  margin: 40px auto;
+  padding: 20px;
+  //background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+input[type="text"] {
+  width: 90%;
+  height: 30px;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+button[type="submit"] {
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+button[type="submit"]:hover {
+  background-color: #3e8e41;
+}
 </style>
