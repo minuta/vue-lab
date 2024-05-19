@@ -42,8 +42,14 @@ const users = [
 const handleSingleId = (res:ServerResponse) => {
     res.setHeader('Content-Type', 'application/json');
     res.writeHead(200);
-    console.log("get a request for id 1 : " + users[0]);
+    // console.log("get a request for id 1 : " + users[0]);
     res.end(JSON.stringify(users[0]));
+}
+
+function log(message) {
+    const now = new Date();
+    const timestamp = `${now.getHours()}:${now.getMinutes()}`;
+    console.log(`[${timestamp}] ${message}`);
 }
 
 const server = createServer((req: IncomingMessage, res: ServerResponse) => {
@@ -56,10 +62,11 @@ const server = createServer((req: IncomingMessage, res: ServerResponse) => {
         //     handleGetUsers(res);
         //     break;
 
-        case path === '/api/users/1' && method === 'GET':
-            console.log("foobar")
+        case path === '/api/users/1' && method === 'GET': {
+            log("got a request for user 1...")
             handleSingleId(res);
             break;
+        }
 
         // case path === '/api/users' && method === 'POST':
         //     handlePostUsers(req, res);

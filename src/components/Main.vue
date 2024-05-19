@@ -4,11 +4,11 @@
       <label for="id">ID:</label>
       <input type="text" v-model="id" @keyup.enter="fetchUserData" id="id" />
 
-      <label for="first-name">First Name:</label>
-      <input type="text" v-model="firstName" id="first-name" readonly />
+      <label for="name">First Name:</label>
+      <input type="text" v-model="name" id="name" readonly />
 
-      <label for="last-name">Last Name:</label>
-      <input type="text" v-model="lastName" id="last-name" readonly />
+      <label for="role">Last Name:</label>
+      <input type="text" v-model="role" id="role" readonly />
     </form>
   </div>
 </template>
@@ -21,15 +21,17 @@ export default defineComponent({
   name: 'UserForm',
   setup() {
     const id = ref<string>('');
-    const firstName = ref<string>('');
-    const lastName = ref<string>('');
+    const name = ref<string>('');
+    const role = ref<string>('');
 
     const fetchUserData = async () => {
       try {
-        const response = await axios.get(`https://api.example.com/users/${id.value}`);
+        // const response = await axios.get(`http://localhost:3000/api/users/${id.value}`);
+        const response = await axios.get('http://localhost:3000/api/users/1');
+        console.log('XXX: ' + response);
         // Assuming response data structure is { firstName: string, lastName: string }
-        firstName.value = response.data.firstName;
-        lastName.value = response.data.lastName;
+        name.value = response.data.name;
+        role.value = response.data.role;
       } catch (error) {
         console.error('Error fetching user data:', error);
       }
@@ -37,8 +39,8 @@ export default defineComponent({
 
     return {
       id,
-      firstName,
-      lastName,
+      name,
+      role,
       fetchUserData,
     };
   },
