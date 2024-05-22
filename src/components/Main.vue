@@ -26,11 +26,12 @@ export default defineComponent({
 
     const fetchUserData = async () => {
       try {
-        // const response = await axios.get(`http://localhost:3000/api/users/${id.value}`);
-        const response = await axios.get('http://localhost:3000/api/users/1');
+        const response = await axios.get(`http://localhost:3000/api/users/${id.value}`);
+        console.log('Sending a request')
         name.value = response.data.name;
         role.value = response.data.role;
-        console.log('got this as result : ' + response.data.toString());
+        console.log('Response data:', JSON.stringify(response.data, null, 2));
+
       } catch (error) {
         console.error('Error fetching user data:', error);
       }
