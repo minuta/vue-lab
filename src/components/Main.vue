@@ -4,10 +4,10 @@
       <label for="id">ID:</label>
       <input type="text" v-model="id" @keyup.enter="fetchUserData" id="id" />
 
-      <label for="name">First Name:</label>
+      <label for="name">name:</label>
       <input type="text" v-model="name" id="name" readonly />
 
-      <label for="role">Last Name:</label>
+      <label for="role">role: </label>
       <input type="text" v-model="role" id="role" readonly />
     </form>
   </div>
@@ -30,8 +30,9 @@ export default defineComponent({
         const response = await axios.get('http://localhost:3000/api/users/1');
         console.log('XXX: ' + response);
         // Assuming response data structure is { firstName: string, lastName: string }
-        name.value = response.data.name;
-        role.value = response.data.role;
+        // id.value = response.data.id;
+        // name.value = response.data.name;
+        // role.value = response.data.role;
       } catch (error) {
         console.error('Error fetching user data:', error);
       }

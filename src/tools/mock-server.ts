@@ -1,10 +1,7 @@
 import { createServer, IncomingMessage, ServerResponse } from 'http';
 import { parse } from 'url';
 
-const users = [
-    { id: 1, name: 'John Wick', role: 'Assassin' },
-    { id: 2, name: 'Usain Bolt', role: 'Runner' },
-];
+const user = {id: '1', name: 'John Wick', role: 'Assassin'};
 
 // const handleGetUsers = (res: ServerResponse) => {
 //     res.setHeader('Content-Type', 'application/json');
@@ -40,13 +37,18 @@ const users = [
 // };
 
 const handleSingleId = (res:ServerResponse) => {
-    res.setHeader('Content-Type', 'application/json');
-    res.writeHead(200);
-    // console.log("get a request for id 1 : " + users[0]);
-    res.end(JSON.stringify(users[0]));
+    res.writeHead(200, {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
+        'Content-Type': 'application/json'
+    });
+
+    let str = JSON.stringify(user);
+    console.log("returning this : " + str);
+    res.end(str);
 }
 
-function log(message) {
+function log(message:string) {
     const now = new Date();
     const timestamp = `${now.getHours()}:${now.getMinutes()}`;
     console.log(`[${timestamp}] ${message}`);

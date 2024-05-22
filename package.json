@@ -7,7 +7,8 @@
     "dev": "vite && mock-server",
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
-    "mock-server": "npx tsx src/tools/mock-server.ts"
+    "mock-server": "npx tsx src/tools/mock-server.ts",
+    "proxy": "http://localhost:3000"
   },
   "dependencies": {
     "@types/node": "^20.12.12",
