@@ -28,11 +28,9 @@ export default defineComponent({
       try {
         // const response = await axios.get(`http://localhost:3000/api/users/${id.value}`);
         const response = await axios.get('http://localhost:3000/api/users/1');
-        console.log('XXX: ' + response);
-        // Assuming response data structure is { firstName: string, lastName: string }
-        // id.value = response.data.id;
-        // name.value = response.data.name;
-        // role.value = response.data.role;
+        name.value = response.data.name;
+        role.value = response.data.role;
+        console.log('got this as result : ' + response.data.toString());
       } catch (error) {
         console.error('Error fetching user data:', error);
       }
