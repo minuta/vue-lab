@@ -44,14 +44,14 @@ const handleSingleId = (res:ServerResponse) => {
     });
 
     let str = JSON.stringify(user);
-    console.log("returning this : " + str);
+    log("returning this : " + str);
     res.end(str);
 }
 
 function log(message:string) {
     const now = new Date();
     const timestamp = `${now.getHours()}:${now.getMinutes()}`;
-    console.log(`[${timestamp}] ${message}`);
+    console.log(`[${timestamp}] mock-server: ${message}`);
 }
 
 const server = createServer((req: IncomingMessage, res: ServerResponse) => {
@@ -82,5 +82,5 @@ const server = createServer((req: IncomingMessage, res: ServerResponse) => {
 
 const PORT = 3000;
 server.listen(PORT, () => {
-    console.log(`Mock server running at http://localhost:${PORT}`);
+    log(`Mock server running at http://localhost:${PORT}`);
 });
