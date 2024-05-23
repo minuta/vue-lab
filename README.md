@@ -28,6 +28,7 @@ npm install
 ```
 ---
 ### Start 
+start the mock-server and the frontend
 ```shell
 npm run dev
 ```
@@ -37,5 +38,5 @@ npm run dev
 
 start the mock-server:
 ```shell
-npx tsx src/tools/mock-server.ts
+npm run mock-server
 ```

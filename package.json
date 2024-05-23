@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite && mock-server",
+    "dev": "npm run mock-server & vite",
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
     "mock-server": "npx tsx src/tools/mock-server.ts",
