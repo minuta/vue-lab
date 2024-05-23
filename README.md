@@ -1,9 +1,41 @@
-# Vue 3 + TypeScript + Vite
+# Vue 3 
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+### About
 
-## Recommended Setup
+Just a playground to experiment with Vue 3.
 
-- [VS Code](https://code.visualstudio.com/) + [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (previously Volar) and disable Vetur
+This is a simple user form component that allows users to enter their ID, and upon submitting the form or pressing Enter, it fetches the corresponding user data (name and role) from a backend API (http://localhost:3000/api/users/${id.value}) using Axios.
 
-- Use [vue-tsc](https://github.com/vuejs/language-tools/tree/master/packages/tsc) for performing the same type checking from the command line, or for generating d.ts files for SFCs.
+### Techstack
+- Vue 3
+  - Composition API
+  - SFC
+- Vite
+- TypeScript
+- Axios (REST)
+- HTTP (Mock-Server)
+
+---
+### Project build
+this project was initially generated via
+
+```shell
+npm create vite@latest
+```
+
+```shell
+npm install
+```
+---
+### Start 
+```shell
+npm run dev
+```
+
+---
+### Mock Server
+
+start the mock-server:
+```shell
+npx tsx src/tools/mock-server.ts
+```
