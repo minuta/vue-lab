@@ -1,7 +1,9 @@
 import { createServer, IncomingMessage, ServerResponse } from 'http';
 import { parse } from 'url';
-
+// import {log} from './logger.ts';
+import {Logger} from './logger.ts';
 const user = {id: '1', name: 'John Wick', role: 'Assassin'};
+const logger = new Logger('mock-server');
 
 // const handleGetUsers = (res: ServerResponse) => {
 //     res.setHeader('Content-Type', 'application/json');
@@ -44,15 +46,11 @@ const handleSingleId = (res:ServerResponse) => {
     });
 
     let str = JSON.stringify(user);
-    log("returning this : " + str);
+    logger.log("returning this : " + str);
     res.end(str);
 }
 
-function log(message:string) {
-    const now = new Date();
-    const timestamp = `${now.getHours()}:${now.getMinutes()}`;
-    console.log(`[${timestamp}] mock-server: ${message}`);
-}
+
 
 const server = createServer((req: IncomingMessage, res: ServerResponse) => {
     const parsedUrl = parse(req.url || '', true);
@@ -65,7 +63,7 @@ const server = createServer((req: IncomingMessage, res: ServerResponse) => {
         //     break;
 
         case path === '/api/users/1' && method === 'GET': {
-            log("got a request for user 1...")
+            logger.log("got a request for user 1...")
             handleSingleId(res);
             break;
         }
@@ -82,5 +80,5 @@ const server = createServer((req: IncomingMessage, res: ServerResponse) => {
 
 const PORT = 3000;
 server.listen(PORT, () => {
-    log(`Mock server running at http://localhost:${PORT}`);
+    logger.log(`Mock server running at http://localhost:${PORT}`);
 });

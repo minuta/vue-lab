@@ -16,6 +16,9 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import axios from 'axios';
+import {Logger} from '../tools/logger.ts';
+
+const logger = new Logger('frontend');
 
 export default defineComponent({
   name: 'UserForm',
@@ -27,13 +30,13 @@ export default defineComponent({
     const fetchUserData = async () => {
       try {
         const response = await axios.get(`http://localhost:3000/api/users/${id.value}`);
-        console.log('Sending a request')
+        logger.log('Sending a request')
         name.value = response.data.name;
         role.value = response.data.role;
-        console.log('Response data:', JSON.stringify(response.data, null, 2));
+        logger.log('Response data:', JSON.stringify(response.data, null, 2));
 
       } catch (error) {
-        console.error('Error fetching user data:', error);
+        logger.error('Error fetching user data:', error);
       }
     };
 
