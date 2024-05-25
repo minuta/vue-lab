@@ -11,7 +11,21 @@
       <input type="text" v-model="role" id="role" readonly />
     </form>
   </div>
+
+  <div>
+    <form @submit.prevent="submitForm">
+    <label for="mail">Mail:</label>
+    <input type="text" v-model="mail" id="mail" />
+
+    <label for="city">City:</label>
+    <input type="text" v-model="city" id="city" />
+
+    <button type="submit">Submit</button>
+    </form>
+  </div>>
 </template>
+
+<!--------------------------------------------------------------------------------------------------------------------->
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
@@ -26,6 +40,9 @@ export default defineComponent({
     const id = ref<string>('');
     const name = ref<string>('');
     const role = ref<string>('');
+    const mail = ref<string>('');
+    const city = ref<string>('');
+
 
     const fetchUserData = async () => {
       try {
@@ -40,15 +57,41 @@ export default defineComponent({
       }
     };
 
+    const submitForm = async () => {
+      try {
+        const payload = {
+          id: id.value,
+          name: name.value,
+          role: role.value,
+          mail: mail.value,
+          city: city.value,
+        };
+        logger.log('Sending POST request with payload:', JSON.stringify(payload, null, 2));
+        const response = await axios.post('http://localhost:3000/api/users', payload);
+        logger.log('Response from POST request:', JSON.stringify(response.data, null, 2));
+        alert('Form submitted successfully!');
+      } catch (error) {
+        logger.error('Error submitting form:', error);
+        alert('Failed to submit the form. Please try again.');
+      }
+    };
+
+
     return {
       id,
       name,
       role,
+      mail,
+      city,
       fetchUserData,
+      submitForm,
     };
   },
 });
 </script>
+
+<!--------------------------------------------------------------------------------------------------------------------->
+
 
 <style scoped>
 /* Add your styles here */
@@ -60,6 +103,8 @@ form {
   //background-color: #f9f9f9;
   border: 1px solid #ccc;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+
 }
 label {
   display: block;
@@ -71,16 +116,15 @@ input[type="text"] {
   margin-bottom: 20px;
   padding: 10px;
   border: 1px solid #ccc;
+  border-radius: 10px;
 }
 button[type="submit"] {
-  background-color: #4CAF50;
-  color: #fff;
+  background-color: #2e90a0;
+  color: #ffffff;
   padding: 10px 20px;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
 }
-button[type="submit"]:hover {
-  background-color: #3e8e41;
-}
+
 </style>
