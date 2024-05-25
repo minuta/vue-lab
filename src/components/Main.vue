@@ -53,7 +53,7 @@ export default defineComponent({
         logger.log('Response data:', JSON.stringify(response.data, null, 2));
 
       } catch (error) {
-        logger.error('Error fetching user data:', error);
+        logger.log('Error fetching user data:', error);
       }
     };
 
@@ -71,7 +71,7 @@ export default defineComponent({
         logger.log('Response from POST request:', JSON.stringify(response.data, null, 2));
         alert('Form submitted successfully!');
       } catch (error) {
-        logger.error('Error submitting form:', error);
+        logger.log('Error submitting form:', error);
         alert('Failed to submit the form. Please try again.');
       }
     };
@@ -94,7 +94,6 @@ export default defineComponent({
 
 
 <style scoped>
-/* Add your styles here */
 
 form {
   max-width: 300px;
@@ -104,12 +103,13 @@ form {
   border: 1px solid #ccc;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-
 }
+
 label {
   display: block;
   margin-bottom: 10px;
 }
+
 input[type="text"] {
   width: 90%;
   height: 30px;
@@ -118,6 +118,7 @@ input[type="text"] {
   border: 1px solid #ccc;
   border-radius: 10px;
 }
+
 button[type="submit"] {
   background-color: #2e90a0;
   color: #ffffff;
