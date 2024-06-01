@@ -1,0 +1,101 @@
+openapi: 3.1.0
+info:
+  title: User API
+  version: 1.0.0
+  description: API for managing users
+
+servers:
+  - url: http://localhost:3000
+
+paths:
+  /api/users/{id}:
+    get:
+      summary: Get user by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: User ID
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+                  role:
+                    type: string
+                  mail:
+                    type: string
+                  city:
+                    type: string
+        '404':
+          description: User not found
+        '500':
+          description: Internal server error
+
+  /api/users:
+    post:
+      summary: Create a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                name:
+                  type: string
+                role:
+                  type: string
+                mail:
+                  type: string
+                city:
+                  type: string
+      responses:
+        '201':
+          description: User created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+                  role:
+                    type: string
+                  mail:
+                    type: string
+                  city:
+                    type: string
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        role:
+          type: string
+        mail:
+          type: string
+        city:
+          type: string
