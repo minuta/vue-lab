@@ -9,10 +9,10 @@
     "preview": "vite preview",
     "mock-server": "npx tsx src/tools/mock-server.ts"
   },
-
   "dependencies": {
     "@types/node": "^20.12.12",
-    "axios": "^1.6.8",
+    "axios": "^1.7.2",
+    "openapi-client-axios": "^7.5.5",
     "ts-node": "^10.9.2",
     "tsx": "^4.10.5",
     "vue": "^3.4.21"

@@ -14,6 +14,7 @@ This is a simple user form component that allows users to enter their ID, and up
 - TypeScript
 - Axios (REST)
 - HTTP (Mock-Server)
+- OpenAPI
 
 ---
 ### Project build
