@@ -24,13 +24,14 @@
         <label for="languages">Choose a language:</label>
         <select v-model="selectedLanguage" id="languages" name="languages">
           <option disabled value="">Please select one</option>
-          <option v-for="(language, index) in languages" :key="index" :value="language">
-            {{ language }}
+            <option v-for="(language, index) in languages" :key="index" :value="language.id">
+
+            {{ language.name}}
           </option>
         </select>
 
         <div v-if="selectedLanguage">
-          <h3>Selected Language: {{ selectedLanguage }}</h3>
+          <h5>Selected Language ID: {{ selectedLanguage }}</h5>
         </div>
       </div>
 
@@ -61,7 +62,14 @@ export default defineComponent({
 
 
     const selectedLanguage = ref('');
-    const languages = ref(['English', 'German', 'Español', 'French', 'Chinese']);
+    const languages = ref([
+      { id: 1, name: 'English' },
+      { id: 2, name: 'German' },
+      { id: 3, name: 'Español' },
+      { id: 4, name: 'French' },
+      { id: 5, name: 'Chinese' }
+    ]);
+
 
     const fetchUserData = async () => {
       try {
