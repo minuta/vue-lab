@@ -2,7 +2,7 @@
 
 ### About
 
-Just a playground to experiment with Vue 3.
+Just a playground to experiment with Vue.JS 3, REST, OpenAPI
 
 This is a simple user form component that allows users to enter their ID, and upon submitting the form or pressing Enter, it fetches the corresponding user data (name and role) from a backend API (http://localhost:3000/api/users/${id.value}) using Axios.
 
@@ -12,9 +12,12 @@ This is a simple user form component that allows users to enter their ID, and up
   - SFC
 - Vite
 - TypeScript
-- Axios (REST)
-- HTTP (Mock-Server)
-- OpenAPI
+- REST
+  - OpenAPI 3.0
+  - Axios (REST)
+  - OpenAPI-Client-Axios (REST)
+- Mock-Server
+  - HTTP lib
 
 ---
 ### Project build

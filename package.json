@@ -12,12 +12,14 @@
   "dependencies": {
     "@types/node": "^20.12.12",
     "axios": "^1.7.2",
+    "js-yaml": "^4.1.0",
     "openapi-client-axios": "^7.5.5",
     "ts-node": "^10.9.2",
     "tsx": "^4.10.5",
     "vue": "^3.4.21"
   },
   "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
     "@vitejs/plugin-vue": "^5.0.4",
     "typescript": "^5.2.2",
     "vite": "^5.2.0",

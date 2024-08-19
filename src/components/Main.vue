@@ -20,7 +20,22 @@
     <label for="city">City:</label>
     <input type="text" v-model="city" id="city" />
 
-    <button type="submit">Submit</button>
+      <div id="app">
+        <label for="languages">Choose a language:</label>
+        <select v-model="selectedLanguage" id="languages" name="languages">
+          <option disabled value="">Please select one</option>
+          <option v-for="(language, index) in languages" :key="index" :value="language">
+            {{ language }}
+          </option>
+        </select>
+
+        <div v-if="selectedLanguage">
+          <h3>Selected Language: {{ selectedLanguage }}</h3>
+        </div>
+      </div>
+
+
+      <button type="submit">Submit</button>
     </form>
   </div>>
 </template>
@@ -44,6 +59,10 @@ export default defineComponent({
     const city = ref<string>('');
 
 
+
+    const selectedLanguage = ref('');
+    const languages = ref(['English', 'German', 'Español', 'French', 'Chinese']);
+
     const fetchUserData = async () => {
       try {
         const response = await axios.get(`http://localhost:3000/api/users/${id.value}`);
@@ -65,6 +84,7 @@ export default defineComponent({
           role: role.value,
           mail: mail.value,
           city: city.value,
+          language: selectedLanguage.value
         };
         logger.log('Sending POST request with payload:', JSON.stringify(payload, null, 2));
         const response = await axios.post('http://localhost:3000/api/users', payload);
@@ -85,13 +105,14 @@ export default defineComponent({
       city,
       fetchUserData,
       submitForm,
+      selectedLanguage,
+      languages
     };
   },
 });
 </script>
 
 <!--------------------------------------------------------------------------------------------------------------------->
-
 
 <style scoped>
 
